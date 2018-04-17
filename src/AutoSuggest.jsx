@@ -24,11 +24,16 @@ export default class AutoSuggest extends React.Component {
 	onChange(value) {
 		const {dataProvider, maxItems} = this.props;
 
-		const {cachedSearches} = this.state;
+		const {dropdownShown, cachedSearches} = this.state;
 
 		this.setState({
 			value: value
 		});
+
+		if (!value.trim() && dropdownShown) {
+			this.hideDropdown();
+			return;
+		}
 
 		if (cachedSearches[value]) {
 			this.setState({
