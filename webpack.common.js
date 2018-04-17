@@ -1,5 +1,6 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: ['babel-polyfill', './src/index.jsx'],
@@ -9,7 +10,13 @@ module.exports = {
 	},
 
 	plugins: [
-		new ExtractTextPlugin('bundle.css')
+		new ExtractTextPlugin('bundle.css'),
+
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            filename: 'index.html', // /public/assets/../index-generated.html
+            alwaysWriteToDisk: true
+        }),
 	],
 
 	module: {
