@@ -1,3 +1,4 @@
 node_modules
-public
+public-production
+public-development
 npm-debug.log
