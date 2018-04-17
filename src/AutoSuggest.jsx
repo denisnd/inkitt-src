@@ -31,7 +31,7 @@ export default class AutoSuggest extends React.Component {
 			return;
 		}
 
-		dataProvider.search(value, maxItems, 150)
+		dataProvider.search(value, maxItems)
 			.then((items) =>
 			 	this.setState({
 			 		dropdownItems: items,

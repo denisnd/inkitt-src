@@ -5,7 +5,8 @@ import AutoSuggest from './AutoSuggest.jsx';
 import DataProvider from './DataProvider.js';
 
 let dataProvider = new DataProvider(
-	['Apple', 'Pineapple', 'Orange', 'Tomato', 'Grapefruit', 'Cherry', 'Blueberry', 'Cranberry', 'Strawberry']
+	['Apple', 'Pineapple', 'Orange', 'Tomato', 'Grapefruit', 'Cherry', 'Blueberry', 'Cranberry', 'Strawberry'],
+	150
 );
 
 ReactDOM.render(
