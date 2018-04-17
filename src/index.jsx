@@ -8,7 +8,7 @@ import DataProvider from './DataProvider';
 
 const dataProvider = new DataProvider(
     ['Apple', 'Pineapple', 'Orange', 'Tomato', 'Grapefruit', 'Cherry', 'Blueberry', 'Cranberry', 'Strawberry'],
-    1500
+    700
 );
 
 ReactDOM.render(
