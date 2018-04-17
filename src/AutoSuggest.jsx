@@ -68,11 +68,13 @@ export default class AutoSuggest extends React.Component {
 					placeholder="Search through our records"
 					className="autosuggest__input"
 				/>
-				<div className="autosuggest__dropdown">
-					{dropdownShown ? dropdownItems.map((item, index) =>
-						<AutoSuggestItem name={item} onSelect={(name) => this.onSelect(name)} key={index}/>
-					) : null}
-				</div>
+				{dropdownShown && 
+					<div className="autosuggest__dropdown">
+						{dropdownItems.map((item, index) =>
+							<AutoSuggestItem name={item} onSelect={(name) => this.onSelect(name)} key={index}/>
+						)}
+					</div>
+				}
 			</div>
 		)
 	}
