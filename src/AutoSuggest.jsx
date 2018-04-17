@@ -20,7 +20,7 @@ export default class AutoSuggest extends React.Component {
             dropdownShown: false,
             itemSelected: undefined,
             cachedSearches: {},
-            loading: true
+            loading: false
         };
     }
 

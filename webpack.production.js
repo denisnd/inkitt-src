@@ -10,7 +10,7 @@ module.exports = merge(common, {
 
 	output: {
 		path: path.resolve(__dirname, 'public-production'),
-		filename: 'bundle.js'
+		filename: '[name].js'
 	},
 
 	plugins: [
