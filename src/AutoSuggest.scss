@@ -39,14 +39,18 @@ $colorBorder: #333333;
 		&:before {
 			display: block;
 			content: '';
-			background: url('./spinner.gif');
-			background: url('./spinner.svg');
+			background: none, url('./spinner.svg') no-repeat;
 
 			position: absolute;
 			right: 3px;
 
 			width: 22px;
 			height: 22px;			
+
+			@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
+		   		/* IE10+ specific styles go here */
+		   		background: url('./spinner.gif') no-repeat
+			}
 		}
 	}
 
