@@ -6,7 +6,7 @@ import DataProvider from './DataProvider.js';
 
 let dataProvider = new DataProvider(
 	['Apple', 'Pineapple', 'Orange', 'Tomato', 'Grapefruit', 'Cherry', 'Blueberry', 'Cranberry', 'Strawberry'],
-	150
+	1500
 );
 
 ReactDOM.render(

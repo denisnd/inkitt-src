@@ -24,11 +24,33 @@ $colorBorder: #333333;
 }
 
 .autosuggest__dropdown {
+	position: relative;
+
 	transition: opacity 0.5s ease-out;
 	opacity: 1;
 
 	border: 1px solid $colorBorder;
 	border-top: none;
+
+	&.loading {
+		min-height: 22px;
+		// width: 100%;
+
+		&:before {
+			display: block;
+			content: '';
+			background: url('./spinner.gif');
+			background: url('./spinner.svg');
+
+			position: absolute;
+			right: 3px;
+
+			width: 22px;
+			height: 22px;			
+		}
+	}
+
+	
 }
 
 .autosuggest__item {

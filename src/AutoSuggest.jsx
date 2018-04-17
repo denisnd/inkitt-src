@@ -17,7 +17,8 @@ export default class AutoSuggest extends React.Component {
 			dropdownItems: [],
 			dropdownShown: false,
 			itemSelected: undefined,
-			cachedSearches: {}
+			cachedSearches: {},
+			loading: true
 		};
 	}
 
@@ -44,15 +45,27 @@ export default class AutoSuggest extends React.Component {
 			return;
 		}
 
+		this.setState({
+			dropdownShown: true,
+			loading: true,
+		});
+
 		dataProvider.search(value, maxItems)
 			.then((items) =>
 			 	this.setState({
 			 		dropdownItems: items,
 			 		cachedSearches: {...cachedSearches, [value]: items},
-			 		dropdownShown: items.length > 0
+			 		dropdownShown: items.length > 0,
+			 		loading: false
 			 	})
 		 	)
-			.catch((error) => this.setState({error: error}));
+			.catch((error) =>
+				this.setState({
+					error: error,
+					loading: false,
+					dropdownShown: false
+				})
+			);
 
 	}
 
@@ -113,7 +126,8 @@ export default class AutoSuggest extends React.Component {
 			value,
 			dropdownShown,
 			dropdownItems,
-			itemSelected
+			itemSelected,
+			loading
 		} = this.state;
 
 		return (
@@ -130,7 +144,7 @@ export default class AutoSuggest extends React.Component {
 					autoComplete="off"
 				/>
 				{dropdownShown && 
-					<div className="autosuggest__dropdown">
+					<div className={'autosuggest__dropdown' + (loading ? ' loading' : '')}>
 						{dropdownItems.map((item, index) =>
 							<AutoSuggestItem
 								name={item}

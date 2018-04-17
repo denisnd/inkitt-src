@@ -53,6 +53,10 @@ module.exports = {
 					}
 				]
 				})
+			},
+			{
+				test: /\.(png|svg|gif|jpeg|jpg)([\?]?.*)$/,
+				loader: 'file-loader'
 			}
 		]
 	}
