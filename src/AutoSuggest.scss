@@ -33,7 +33,7 @@ $colorBorder: #333333;
 	border-top: none;
 
 	&.loading {
-		min-height: 22px;
+		min-height: 31px;
 		// width: 100%;
 
 		&:before {
@@ -42,7 +42,8 @@ $colorBorder: #333333;
 			background: none, url('./spinner.svg') no-repeat;
 
 			position: absolute;
-			right: 3px;
+			right: 0.5em;
+			top: 0.3em;
 
 			width: 22px;
 			height: 22px;			
