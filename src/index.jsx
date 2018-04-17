@@ -1,3 +1,5 @@
+import 'raf/polyfill'; // requestAnimationFrame polyfill for React 16
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
