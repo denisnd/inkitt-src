@@ -99,6 +99,10 @@ export default class AutoSuggest extends React.Component {
 		}
 	}
 
+	onBlur(e) {
+		this.hideDropdown();
+	}
+
 	render() {
 		const {
 			value,
@@ -114,7 +118,7 @@ export default class AutoSuggest extends React.Component {
 					value={value}
 					onChange={(e) => this.onChange(e.target.value)}
 					onKeyDown={(e) => this.onKeyDown(e.keyCode)}
-					onBlur={() => this.hideDropdown()}
+					onBlur={(e) => this.onBlur(e)}
 					ref={(ref) => this.input = ref}
 					placeholder="Search fruits"
 					className="autosuggest__input"
@@ -125,7 +129,7 @@ export default class AutoSuggest extends React.Component {
 						{dropdownItems.map((item, index) =>
 							<AutoSuggestItem
 								name={item}
-								selectItem={(name) => this.selectItem(name)}
+								onSelect={(name) => this.selectItem(name)}
 								key={index}
 								selected={itemSelected === index}
 							/>
@@ -150,10 +154,17 @@ const NOOP = function() {};
 
 class AutoSuggestItem extends React.Component {
 	render() {
-		const {name, selectItem = NOOP, selected} = this.props;
+		const {name, onSelect = NOOP, selected} = this.props;
+
+		const onMouseDown = function(event) {
+			event.stopPropagation();
+			onSelect(name);
+
+			return false;
+		}
 
 		return (
-			<div className={'autosuggest__item' + (selected ? ' selected' : '')} onClick={() => selectItem(name)} ref={(ref) => this.ref = ref}>
+			<div className={'autosuggest__item' + (selected ? ' selected' : '')} onMouseDown={onMouseDown}>
 				{name}
 			</div>
 		)
