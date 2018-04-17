@@ -2,79 +2,79 @@ $colorHighlight: #a5bde5;
 $colorBorder: #333333;
 
 .autosuggest {
-	width: 200px;
+    width: 200px;
 
-	@media screen and (max-width: 960px) {
-		width: 100%;
-	}
+    @media screen and (max-width: 960px) {
+        width: 100%;
+    }
 }
 
 .autosuggest__input {
-	border: 1px solid $colorBorder;
-	padding-top: 0.3em;
-	padding-bottom: 0.3em;
+    border: 1px solid $colorBorder;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
 
-	&:focus {
-		outline: none;
-	}
+    &:focus {
+        outline: none;
+    }
 }
 
 .autosuggest__input, .autosuggest__item {
-	box-sizing: border-box;
+    box-sizing: border-box;
 
-	width: 100%;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
+    width: 100%;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 
-	@media screen and (max-width: 960px) {
-		font-size: 150%;
-	}
+    @media screen and (max-width: 960px) {
+        font-size: 150%;
+    }
 }
 
 .autosuggest__dropdown {
-	position: relative;
+    position: relative;
 
-	transition: opacity 0.5s ease-out;
-	opacity: 1;
+    transition: opacity 0.5s ease-out;
+    opacity: 1;
 
-	border: 1px solid $colorBorder;
-	border-top: none;
+    border: 1px solid $colorBorder;
+    border-top: none;
 
-	box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0.43);
+    box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0.43);
 
-	&.loading {
-		min-height: 31px;
-		// width: 100%;
+    &.loading {
+        min-height: 31px;
+        // width: 100%;
 
-		&:before {
-			display: block;
-			content: '';
-			background: none, url('./spinner.svg') no-repeat;
+        &:before {
+            display: block;
+            content: '';
+            background: none, url('./spinner.svg') no-repeat;
 
-			position: absolute;
-			right: 0.5em;
-			top: 0.3em;
+            position: absolute;
+            right: 0.5em;
+            top: 0.3em;
 
-			width: 22px;
-			height: 22px;			
+            width: 22px;
+            height: 22px;           
 
-			@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
-		   		/* IE10+ specific styles go here */
-		   		background: url('./spinner.gif') no-repeat
-			}
-		}
-	}
+            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
+                /* IE10+ specific styles go here */
+                background: url('./spinner.gif') no-repeat
+            }
+        }
+    }
 
-	
+    
 }
 
 .autosuggest__item {
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 
-	cursor: pointer;
-	
-	&.selected, &:hover {
-		background-color: $colorHighlight;
-	}
+    cursor: pointer;
+    
+    &.selected, &:hover {
+        background-color: $colorHighlight;
+    }
 }
