@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './AutoSuggest.scss';
+
 export default class AutoSuggest extends React.Component {
 	constructor(props) {
 		super(props);

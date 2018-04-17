@@ -1,0 +1,22 @@
+$colorBorder: #333333;
+
+.autosuggest {
+	width: 200px;
+}
+
+.autosuggest_input {
+	width: 100%;
+}
+
+.autosuggest__item {
+	width: 100%;
+
+	padding: 0.5em 2em;
+
+	cursor: pointer;
+	border-bottom: 1px solid $colorBorder;
+
+	&:last-child {
+		border-bottom: none;
+	}
+}
