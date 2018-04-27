@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {CSSTransitionGroup} from 'react-transition-group';
 
 import AutoSuggestItem from './AutoSuggestItem';
 
-import './AutoSuggest.scss';
+import './sass/AutoSuggest.scss';
 
 const KC_UP = 38;
 const KC_DOWN = 40;
@@ -78,12 +79,15 @@ export default class AutoSuggest extends React.Component {
 
     hideDropdown() {
         this.setState({
+            dropdownItems: [],
             dropdownShown: false,
             itemSelected: undefined
         });
     }
 
-    onKeyDown(keyCode) {
+    onKeyDown(event) {
+        const keyCode = event.keyCode;
+
         const { dropdownItems, dropdownShown, itemSelected } = this.state;
 
         switch(keyCode) {
@@ -104,6 +108,8 @@ export default class AutoSuggest extends React.Component {
                 this.setState({ itemSelected: newItemSelected });
                 break;
             case KC_ENTER:
+                event.preventDefault();
+
                 if (dropdownShown && dropdownItems && dropdownItems[itemSelected]) {
                     this.selectItem(dropdownItems[itemSelected]);
                 }
@@ -129,31 +135,38 @@ export default class AutoSuggest extends React.Component {
             loading
         } = this.state;
 
+        let {placeholder} = this.props;
+
         return (
             <div className="autosuggest">
                 <input
                     type="text"
                     value={value}
                     onChange={e => this.onChange(e.target.value)}
-                    onKeyDown={e => this.onKeyDown(e.keyCode)}
+                    onKeyDown={e => this.onKeyDown(e)}
                     onBlur={e => this.onBlur(e)}
                     ref={ref => this.input = ref}
-                    placeholder="Search fruits"
+                    placeholder={placeholder || 'Search fruits'}
                     className="autosuggest__input"
                     autoComplete="off"
                 />
-                {dropdownShown && 
-                    <div className={'autosuggest__dropdown' + (loading ? ' loading' : '')}>
-                        {dropdownItems.map((item, index) =>
-                            <AutoSuggestItem
-                                name={item}
-                                onSelect={name => this.selectItem(name)}
-                                key={index}
-                                selected={itemSelected === index}
-                            />
-                        )}
-                    </div>
-                }
+                <CSSTransitionGroup
+                    transitionName="dropdown"
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={300}>
+                    {dropdownShown &&
+                        <div className={'autosuggest__dropdown' + (loading ? ' loading' : '')} key="0">
+                            {dropdownItems.map((item, index) =>
+                                <AutoSuggestItem
+                                    name={item}
+                                    onSelect={name => this.selectItem(name)}
+                                    key={index}
+                                    selected={itemSelected === index}
+                                />
+                            )}
+                        </div>
+                    }
+                </CSSTransitionGroup>
             </div>
         )
     }
